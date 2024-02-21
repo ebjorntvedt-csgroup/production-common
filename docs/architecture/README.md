@@ -44,7 +44,7 @@ Applicable and Referenced documents are the documents which have reference or re
 2.3 [Interfaces Context](#interfaces-context)
 2.4 [Long Lifetime Software](#long-lifetime-software)
 ***
-The following sections are giving an overview about the architecture and strategies that will be used for the COPRS 1.1, on trying to justify the decisions that had been made.
+The following sections give an overview of the architecture and strategies that will be used for the COPRS 1.1, on trying to justify the decisions that had been made.
 
 Currently the COPRS system is used operationally in the version 1.0 that is based on the S1PRO software that had been orginally developed in order to run the Ground Segment for Sentinel-1.
 
@@ -53,7 +53,7 @@ That system is being operated on a set of micro services that are connected with
 The goal is to transform the existing software in such a way that it can be used together with SCDF. This will have an impact on the way how the software will be deployed to the cluster as well as the configuration will be set.
 
 ### Design Standard and Convention
-In order to give a better overview about the general system and focus on the important aspects, most diagrams shown will be an abstraction of the system behind. Thus most of the diagrams will show that the microservices are communicating with each other.
+In order to give a better overview of the general system and focus on the important aspects, most diagrams shown will be an abstraction of the system behind. Thus most of the diagrams will show that the microservices are communicating with each other.
 
 However normally between all microservices there will be kafka topics that are storing the events and handling the communication between the different services. Just in case the kafka system will be important, it will be shown. Additionally the diagrams will in general also not provide information about different timeliness that are existing within the system.
 
@@ -61,12 +61,12 @@ However normally between all microservices there will be kafka topics that are s
 
 The RS provides the processing chain in a Cloud environment by containerizing the micro-services enabling the systematic processing of the Sentinel satellites data. For Sentinel-1, Sentinel-2 and Sentinel-3 satellits the raw data received by CADIP and EDIP is systematically processed and made available to end consumers via PRIP.
 
-The RS implements CADIP (CADU Interface Delivery Point) interface to ingest the downlinked raw data. The interface allows to query sessions and associated files (chunks) using OData4 interface over the internet. The RS Service detects and downloads the raw data using its Trigger and Worker components. The RS also impelemnts EDIP ("EDRS-ICD-ADSO-1000830938) interfaces  are used by PRO to poll for new CADU/DSIB files and download and ingest raw files. The XBIP interface is the predecessor of the CADIP and realized on the WebDav protocol, but should not be used in new implementations anymore.
+The RS implements CADIP (CADU Interface Delivery Point) interface to ingest the downlinked raw data. The interface allows to query sessions and associated files (chunks) using OData4 interface over the internet. The RS Service detects and downloads the raw data using its Trigger and Worker components. The RS also implements EDIP ("EDRS-ICD-ADSO-1000830938) interfaces that are used by PRO to poll for new CADU/DSIB files and download and ingest raw files. The XBIP interface is the predecessor of the CADIP and realized on the WebDav protocol, but should not be used in new implementations anymore.
 
 
 
 ### Interfaces Context
-Following context diagram illustrates the relationship between the RS PRO system with other systems.
+The following context diagram illustrates the relationship between the RS PRO system with other systems.
 
 ![8b153b50a63b1605974e1d2b59a6c1e9.png](media/8b153b50a63b1605974e1d2b59a6c1e9.png)
 
