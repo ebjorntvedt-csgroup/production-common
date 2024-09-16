@@ -16,23 +16,23 @@ While the RS Addons are usually event driven workflows, there are Standalone ser
 
 ## Installation Requirements
 
-In order to use the software correctly within your cluster, it needs some dependencies to be operated successful. Before you deploy any software, please ensure that the COPRS infrastructure is installed correctly on your cluster. Further information on the infrastructure and how to deploy it, can be found [here](https://github.com/COPRS/infrastructure)
+In order to use the software correctly within your cluster, it needs some dependencies to be operated successful. Before you deploy any software, please ensure that the COPRS infrastructure is installed correctly on your cluster. Further information on the infrastructure and how to deploy it, can be found in its [Git repository](https://github.com/COPRS/infrastructure).
 
 ## How to deploy
 
-Please consult the [Installation Manual](./docs/install_manuals/) for further information on how to deploy the software of this repository.
+Please consult this component's [installation manual](./docs/install_manuals/) for further information on how to deploy the software of this repository.
 
 ## How to contribute
 
-If you're interested in rebuilding RS add-ons on your own or customize them, please consult [this](./docs/howto/README.md) documentation.
+If you are interested in rebuilding RS add-ons on your own or customize them, please consult the [how-to](./docs/howto/README.md) documentation.
 
-## Structure of the Repository
+## Structure of the repository
 
 ### processing-common
 
-This directory contains the definitions of the default RS Core Components of the Copernicus Reference System. Each sub folder represents a own RS Core Component containing a documentation on how to use and configure the component, a definition of the workflow as well as a factory default configuration that can be used to learn how to configure the software. The factory default configuration for the RS Core components according to the ICD COPRS-ICD-ADST-001139201.
+This directory contains the definitions of the default RS Core Components of the Copernicus Reference System. Each sub folder represents a RS Core Component containing the documentation on how to use and configure the component, a definition of the workflow as well as a factory default configuration that can be used to learn how to configure the software. The factory default configuration for the RS Core components according to the ICD COPRS-ICD-ADST-001139201.
 
-The RS Core components are build automatically when something is commited and generating a zip file that will be uploaded to the COPRS Artifactory instance. If you just want to deploy these instances, you can download the RS Core component archive directly. You can find an overview of the available components are versions [here](https://artifactory.coprs.esa-copernicus.eu/artifactory/rs-zip/).
+The RS Core components are built automatically when something is commited and a zip file that will be uploaded to the COPRS Artifactory instance is generated. If you just want to deploy these instances, you can download the RS Core component archive directly. You can find an overview of the available components and the available versions on the project's [Artifactory](https://artifactory.coprs.esa-copernicus.eu/artifactory/rs-zip/) instance.
 
 Please note that this directory does not contain the RS Add-ons of the COPRS. They are located in different repositories, but using a similiar structure. You can find them here for:
 
@@ -42,11 +42,11 @@ Please note that this directory does not contain the RS Add-ons of the COPRS. Th
 
 ### rs-container
 
-When deploying either a SCDF stream definition or a standalone component it is referencing docker images. These are build together with the components itself and pushed into the project Artifactory instance.
+When deploying either a SCDF stream definition or a standalone component, it is referencing docker images. These are built together with the components themselves and pushed into the project's Artifactory instance.
 
-However in some situation there are base images required that used commonly across the whole project or images that are preparing the IPF that handles the actually processing before the actual COPRS software is added.
+However in some situations, there are base images required that are used commonly across the whole project or images that are preparing the IPF that handles the actually processing before the actual COPRS software is added.
 
-The rs-container folder contains a set of Docker files that a generating and pushed the docker images automatically into Artifactory so it can be used by the components or when being deployed to your cluster.
+The rs-container folder contains a set of Docker files that allow generating and pushing the docker images automatically into Artifactory so it can be used by the components or when being deployed to your cluster.
 
 ### rs-core
 
@@ -60,21 +60,21 @@ While these components can be deployed into your cluster as well, please note th
 
 ### rs-libs
 
-This directory contains the source code of the common libraries that are used across the applications of the COPRS. Certain functions and utilities are needed by multiple microservices. In order to avoid code duplication these parts had been extracted into on libraries that are dedicated to the COPRS.
+This directory contains the source code of the common libraries that are used across the applications of the COPRS. Certain functions and utilities are needed by multiple microservices. In order to avoid code duplication these parts have been extracted into libraries that are dedicated to the COPRS.
 
-Each subfolder contains a library that is used within the system. Check this folder out if you intend to improve or study the common libraries used by the COPRS.
+Each subfolder contains a library that is used within the system. Check this folder if you intend to improve or study the common libraries used by the COPRS.
 
 ### rs-processing-common
 
-A part of the RS Core Components that are deployed as stream definitions with an SCDF instance, there are a set of standalone components that are not working on an event driven approach, but instead providing some services to the system. These are usually front end applications that are exposing some kind of interface to the outside worls that can be used by end-users or other components.
+A part of the RS Core Components that are deployed as stream definitions with a SCDF instance, there are a set of standalone components that are not working on an event driven approach, but instead providing some services to the system. These are usually front end applications that are exposing some kind of interface to the outside world that can be used by end-users or other components.
 
-Each subfolder contains a standalone component that will automatically build a helm chart that is pushed into the Artifactory instance of
+Each subfolder contains a standalone component that will automatically build a helm chart that is pushed into the Artifactory instance of the project.
 
 A set of helm charts that are deployed as standalone components and not operated within the SCDF streams
 
 ### rs-testing
 
-During the development of the COPRS it was identified that there are certain situations where you not want to access the operational systems directly and want to have the possibilities to carry out some test runs within your own environment.
+During the development of the COPRS it was identified that there are certain situations where you not want to access the operational systems directly and want to have the possibility to carry out some test runs within your own environment.
 
 This folder contains a set of extra components that are not supposed to be used in an operational environment. They shall help to test the system and verify local configuratons before setting it up against an operational one.
 
@@ -84,14 +84,14 @@ Some additional helm charts that can be used to mock systems.
 
 ## Documentation
 
-### Architecture Design Document
+### Architecture Design Document (ADD)
 
-In order to get an overview about the architecture of the overall design of COPRS and the software components, please consult the Architecture design document that can be found [here](./docs/architecture)
+In order to get an overview of the architecture of the overall design of COPRS and the software components, please consult the [Architecture design document](./docs/architecture).
 
-### Installation Manual
+### Installation Manual (IM)
 
-For further information on deploying the RS Core Components or RS Standalone Components, please consult the Installation Manual, that can be found [here](./docs/install_manuals)
+For further information on deploying the RS Core Components or RS Standalone Components, please consult the [Installation Manual](./docs/install_manuals).
 
 ### Reports
 
-The build pipe of this project is automatically generating Sonarqube reports for each module when it is build. This allows an easy overview about the status of the project. You can check the reports of the project [here](https://sonarqube.coprs.esa-copernicus.eu/projects)
+The build pipeline of this project is automatically generating Sonarqube reports for each module when it is built. This allows an easy overview of the status of the project. You can check the reports of the project on its [SonarQube](https://sonarqube.coprs.esa-copernicus.eu/projects) instance.
